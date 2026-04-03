@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SN4M</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="showProfile()">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">SN4M</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ricerca.html">Cerca</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="playlist.html">Playlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="profilo.html">Profilo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registrati.html">Registrati</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <div id="contenuto_profilo">
+      <div id="modello_profilo" class="card d-none shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="card-name mb-0"></h2>
+            <button class="btn btn-primary" onclick="toggleEdit(true)">Modifica Profilo</button>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Username:</strong> <span class="card-username"></span></p>
+              <p><strong>Email:</strong> <span class="card-email"></span></p>
+            </div>
+            <div class="col-md-6">
+              <h6>Generi preferiti:</h6>
+              <div class="list-genres d-flex flex-wrap"></div>
+            </div>
+          </div>
+
+          <hr>
+          <h5>Le tue Playlist</h5>
+          <ul class="list-group mb-4" id="lista_playlist_utente"></ul>
+
+          <h5>Artisti preferiti</h5>
+          <div id="lista_artisti_preferiti" class="d-flex flex-wrap"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contenitore_modifica" class="card d-none border-warning shadow-sm">
+      <div class="card-body">
+        <h3>Modifica il tuo Profilo</h3>
+        <form id="editProfileForm" onsubmit="saveProfileChanges(event)">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nome</label>
+              <input type="text" id="editName" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Cognome</label>
+              <input type="text" id="editSurname" class="form-control" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nuova Password (lascia vuoto per non cambiare)</label>
+            <input type="password" id="editPassword" class="form-control" placeholder="Minimo 6 caratteri">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">I tuoi Generi</label>
+            <div id="editCheckboxes" class="d-flex flex-wrap gap-3 p-2 border rounded">
+              <div class="form-check"><input class="form-check-input" type="checkbox" value="Rock" id="eRock"><label
+                  for="eRock">Rock</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" value="Pop" id="ePop"><label
+                  for="ePop">Pop</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" value="Jazz" id="eJazz"><label
+                  for="eJazz">Jazz</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" value="Rap" id="eRap"><label
+                  for="eRap">Rap</label></div>
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">Salva Modifiche</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="toggleEdit(false)">Annulla</button>
+            <button type="button" class="btn btn-danger ms-auto" onclick="deleteAccount()">Elimina Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="js.js"></script>
+</body>
+
+</html>
